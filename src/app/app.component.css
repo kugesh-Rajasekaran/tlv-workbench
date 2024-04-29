@@ -65,9 +65,20 @@
   border-radius: 2%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow-y: auto;
 }
 
+
+.tlv-list {
+  height: 100%;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
 
 

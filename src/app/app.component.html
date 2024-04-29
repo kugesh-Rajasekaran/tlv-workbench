@@ -1,7 +1,7 @@
 <div class="container-1">
   <div class="sidebar">
-    <textarea [(ngModel)]="tlv" (keydown.enter)="onSubmitTlv()" type="text" rows="10"
-      placeholder="Enter TLV string here...">
+    <textarea [(ngModel)]="tlv" (keydown)="onSubmitTlv($event)" type="text" rows="10"
+      placeholder="Enter TLV string here (Press enter to submit)">
     </textarea>
 
     <div class="container-2">
@@ -12,12 +12,16 @@
       </div>
 
       <div class="container-3">
+        <p class="tlv-list" *ngFor="let tlv of tlvHistory.reverse()" (click)="onItemClick(tlv)">
+          {{ tlv }}
+        </p>
 
-        <tree> </tree>
       </div>
     </div>
 
   </div>
+
+  <!-- <tree /> -->
 
 
 </div>

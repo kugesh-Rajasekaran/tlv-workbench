@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { StorageHelper } from './utils/storage';
 
 @Component({
@@ -10,7 +10,7 @@ export class AppComponent {
   tlv: string | null;
   tlvHistory: string[];
 
-  constructor() {
+  constructor(private el: ElementRef) {
     this.tlv = null;
     this.tlvHistory = StorageHelper.tlvs;
   }
@@ -21,9 +21,18 @@ export class AppComponent {
     localStorage.setItem('tlv-history', '[]');
   }
 
-  onSubmitTlv() {
+  onSubmitTlv(event: KeyboardEvent) {
+    console.log('onSubmitTlv');
+    if (event.key !== 'Enter') return;
+    event.preventDefault();
     const resultTLV = this.tlv?.replace(' ', '').replace('\n', '');
     if (!resultTLV) return;
-    const stored = StorageHelper.addTlv(resultTLV);
+    StorageHelper.addTlv(resultTLV);
+    this.tlvHistory.push(resultTLV);
+    this.tlv = null;
+  }
+
+  onItemClick(tlv: string) {
+    console.log('onItemClick');
   }
 }
