@@ -1,0 +1,11 @@
+.flow-chart {
+  position: relative;
+}
+
+.node {
+  position: absolute;
+}
+
+.node input {
+  width: 100px;
+}

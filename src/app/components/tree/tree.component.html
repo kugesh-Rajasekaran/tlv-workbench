@@ -1,0 +1,8 @@
+<div class="flow-chart">
+  <div *ngFor="let node of nodes" class="node" [style.left]="node.x + 'px'" [style.top]="node.y + 'px'">
+    <input type="text" [(ngModel)]="node.text" (input)="updateNodeText(node)" />
+  </div>
+  <svg>
+    <path *ngFor="let line of lines" [attr.d]="getCurvedLine(line)" stroke="black" fill="none" />
+  </svg>
+</div>

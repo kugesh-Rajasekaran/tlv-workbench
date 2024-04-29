@@ -92,5 +92,8 @@
       }
     }
   },
-  "defaultProject": "tlv-workbench"
+  "defaultProject": "tlv-workbench",
+  "cli": {
+    "analytics": false
+  }
 }
