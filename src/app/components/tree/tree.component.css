@@ -1,11 +1,27 @@
-.flow-chart {
-  position: relative;
+.tree {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  font-size: large;
+  margin-top: 8%;
 }
 
 .node {
-  position: absolute;
+  width: 100%;
+  margin-left: 4%;
 }
 
-.node input {
-  width: 100px;
+.children {
+  margin-bottom: 0%;
+}
+
+.key {
+  margin-top: 1%;
+  font-weight: bold;
+  font-family: "Lowan", serif;
+}
+
+.value {
+  margin-left: 1%;
+  margin-bottom: 2%;
 }

@@ -12,7 +12,7 @@
       </div>
 
       <div class="container-3">
-        <p class="tlv-list" *ngFor="let tlv of tlvHistory.reverse()" (click)="onItemClick(tlv)">
+        <p class="tlv-list" *ngFor="let tlv of tlvHistory.reverse()" (click)="onItemClick( tlv)">
           {{ tlv }}
         </p>
 
@@ -21,7 +21,12 @@
 
   </div>
 
-  <!-- <tree /> -->
+  <!-- <ng-component> -->
+  <!-- <p>fdsknjfdjkfndn</p> -->
+  <app-tree-chart *ngIf="tlvNodes != null" class="tlv-diagram" [treeData]="tlvNodes" />
+  <!-- {{tlvNodes}} -->
+  <!-- </ng-component> -->
+
 
 
 </div>

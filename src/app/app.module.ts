@@ -7,10 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
-import { TreeComponent } from './components/tree/tree.component';
+import { TreeChartComponent } from './components/tree/tree.component';
 
 @NgModule({
-  declarations: [AppComponent, TreeComponent],
+  declarations: [AppComponent, TreeChartComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
