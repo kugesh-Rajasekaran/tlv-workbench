@@ -1,0 +1,28 @@
+@import "@angular/material/prebuilt-themes/pink-bluegrey.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Lowan';
+  src: url('/src/assets/iowanoldstbtroman.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+textarea {
+  border-radius: 2%;
+  padding: 2% 4%;
+  border-width: 2px;
+  border-color: #000000;
+  font-family: "Lowan", serif;
+  font-size: large;
+}
+
+
+textarea:focus {
+  outline: none;
+}
+
