@@ -20,6 +20,10 @@
       "es2018",
       "dom"
     ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./@types"
+    ],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
   },

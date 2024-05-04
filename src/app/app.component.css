@@ -41,12 +41,8 @@
 }
 
 .submit-tlv-button {
-  /* border-radius: 6px ;
-  height: 10%;
-  width: 40%;*/
   background-color: #FAFFFF;
-
-    border-radius: 6px;
+  border-radius: 6px;
   border-width: 2px;
   border-color: #000000;
   font-family: "Lowan", serif;
@@ -95,5 +91,4 @@
 .tlv-diagram {
   height: 100%;
   width: 70%;
-
 }

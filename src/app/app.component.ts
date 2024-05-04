@@ -1,7 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
 import { StorageHelper } from './utils/storage';
-import TLV from 'node-tlv';
-import { Buffer } from 'buffer';
+import TLV from 'node-tlv-upgraded';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +11,12 @@ export class AppComponent {
   tlv: string | null;
   tlvHistory: string[];
   tlvNodes!: TLV;
+  tlvString!: string;
 
   constructor(private el: ElementRef) {
     this.tlv = null;
     this.tlvHistory = StorageHelper.tlvs;
+    this.tlvString = this.tlvHistory[this.tlvHistory.length - 1];
     this.tlvNodes = TLV.parse(this.tlvHistory[this.tlvHistory.length - 1]);
   }
 
@@ -39,6 +40,7 @@ export class AppComponent {
   onItemClick(tlv: string) {
     console.log('onItemClick', TLV.parse(tlv));
     try {
+      this.tlvString = tlv;
       this.tlvNodes = TLV.parse(tlv);
     } catch (e) {}
   }

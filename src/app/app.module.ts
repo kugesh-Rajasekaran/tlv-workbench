@@ -8,6 +8,7 @@ import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/materia
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 import { TreeChartComponent } from './components/tree/tree.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @NgModule({
   declarations: [AppComponent, TreeChartComponent],
@@ -18,8 +19,9 @@ import { TreeChartComponent } from './components/tree/tree.component';
     MatFormFieldModule,
     BrowserAnimationsModule,
     MatInputModule,
+    ClipboardModule,
   ],
-  providers: [],
+  providers: [ClipboardModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

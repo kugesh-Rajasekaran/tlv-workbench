@@ -1,6 +1,26 @@
+<ng-template [ngIf]="copied">
+  <div class="overlay">
+    <div class="copied-message">
+      <svg class="tick-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
+      </svg>
+      <span>TLV string copied to the clipboard!</span>
+    </div>
+  </div>
+</ng-template>
+
+<div class="checkbox-container">
+
+  <input class="checkbox" type="checkbox" [checked]="copyOnEdit" (click)="changeCopyOnEdit()">
+  <span>Copy On Edit</span>
+  <input type="button" value="Copy To Clipboard" (click)="copyToClipboard(this.tlvString)">
+  <input type="button" value="Copy Base64 to Clipboard" (click)="copyBase64(this.tlvString)">
+</div>
+
 <div class="tree">
   <ng-container *ngTemplateOutlet="nodeTemplate; context: { $implicit: treeData }"></ng-container>
 </div>
+
 <ng-template #nodeTemplate let-node>
   <div class="node">
     <div class="key">{{ node.tag }} ( {{ node.name }} )</div>
@@ -10,6 +30,14 @@
       </ng-container>
     </div>
 
-    <div class="value" *ngIf="node.child.length == 0">{{ node.value }}</div>
+    <div class="value" *ngIf="node.child.length == 0">
+      <!-- {{ node.value }} -->
+
+      <input *ngIf="editing" [(ngModel)]="node.value" (blur)="editing = false" (keydown.enter)="editComplete(node)"
+        #valueInput class="editable-input">
+
+      <span *ngIf="!editing" (click)="editing = true" class="editable-text">{{ node.value }}</span>
+
+    </div>
   </div>
 </ng-template>
