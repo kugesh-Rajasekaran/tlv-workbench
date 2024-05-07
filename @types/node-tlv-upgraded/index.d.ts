@@ -80,6 +80,16 @@ declare class TLV {
   ) => string;
 
   /**
+   * Update
+   * @param data TAG, LENGTH, VALUE hex string
+   */
+  static add: (
+    tlv: string,
+    tagUnder: string,
+    { tagToAdd, valueToAdd }: { tagToAdd: string; valueToAdd: string }
+  ) => string;
+
+  /**
    * Return value of the length field as a hex string
    */
   static T: (tag: string | Buffer | number) => string;

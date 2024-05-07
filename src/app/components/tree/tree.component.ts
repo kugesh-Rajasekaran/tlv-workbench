@@ -26,6 +26,8 @@ export class TreeChartComponent implements OnChanges {
   editing: boolean = false;
   copied = false;
   copyOnEdit: boolean;
+  startedAdd: string = '';
+  newTag = { key: null, value: null };
 
   @ViewChild('inputElement') inputElement!: ElementRef;
 
@@ -38,7 +40,6 @@ export class TreeChartComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.treeData = changes.treeData.currentValue;
     console.log('Changes: ', this.treeData);
-    // this.treeData.getValue;
   }
 
   editComplete(node: TLV) {
@@ -48,6 +49,18 @@ export class TreeChartComponent implements OnChanges {
     console.log('editComplete 1', this.tlvString);
     this.treeData = TLV.parse(this.tlvString);
     this.copyToClipboard(this.tlvString);
+  }
+
+  additionComplete(parentNode: TLV) {
+    console.log('additionComplete', { parentNode, new: this.newTag });
+    if (!this.newTag.key || !this.newTag.value) return;
+    this.startedAdd = '';
+    this.tlvString = TLV.add(this.tlvString, parentNode.tag, {
+      tagToAdd: this.newTag.key,
+      valueToAdd: this.newTag.value,
+    });
+    console.log('Added: ', this.tlvString);
+    this.treeData = TLV.parse(this.tlvString);
   }
 
   changeCopyOnEdit() {
@@ -69,5 +82,9 @@ export class TreeChartComponent implements OnChanges {
     setTimeout(() => {
       this.copied = false;
     }, 2000);
+  }
+
+  addTag(node: TLV) {
+    this.startedAdd = node.tag;
   }
 }

@@ -23,8 +23,17 @@
 
 <ng-template #nodeTemplate let-node>
   <div class="node">
-    <div class="key">{{ node.tag }} ( {{ node.name }} )</div>
+    <div class="key" (click)="addTag(node)">{{ node.tag }} ( {{ node.name ?? "Unknown value" }} )
+      <span class="plus">&#43;</span>
+    </div>
+
+
     <div class="children" *ngIf="node.child">
+      <input *ngIf="startedAdd == node.tag" [(ngModel)]="newTag.key" placeholder="Enter Key" (blur)="editing = false"
+        (keydown.enter)="additionComplete(node)" class="adding-tag">
+      <input *ngIf="startedAdd == node.tag" [(ngModel)]="newTag.value" placeholder="Enter Value"
+        (blur)="editing = false" (keydown.enter)="additionComplete(node)" class="adding-tag">
+
       <ng-container *ngFor="let child of node.child">
         <ng-container *ngTemplateOutlet="nodeTemplate; context: { $implicit: child }"></ng-container>
       </ng-container>
