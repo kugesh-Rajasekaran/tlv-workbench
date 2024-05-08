@@ -16,12 +16,11 @@ export class AppComponent {
   constructor(private el: ElementRef) {
     this.tlv = null;
     this.tlvHistory = StorageHelper.tlvs;
-    this.tlvString = this.tlvHistory[this.tlvHistory.length - 1];
-    this.tlvNodes = TLV.parse(this.tlvHistory[this.tlvHistory.length - 1]);
+    // this.tlvString = this.tlvHistory[this.tlvHistory.length - 1];
+    // this.tlvNodes = TLV.parse(this.tlvHistory[this.tlvHistory.length - 1]);
   }
 
   onRemoveTlv() {
-    console.log('Checked...');
     this.tlvHistory = [];
     localStorage.setItem('tlv-history', '[]');
   }
