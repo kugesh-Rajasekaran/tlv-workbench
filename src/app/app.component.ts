@@ -16,6 +16,7 @@ export class AppComponent {
   constructor(private el: ElementRef) {
     this.tlv = null;
     this.tlvHistory = StorageHelper.tlvs;
+    localStorage.setItem('tlv-history', '[]');
     // this.tlvString = this.tlvHistory[this.tlvHistory.length - 1];
     // this.tlvNodes = TLV.parse(this.tlvHistory[this.tlvHistory.length - 1]);
   }
@@ -34,6 +35,7 @@ export class AppComponent {
     StorageHelper.addTlv(resultTLV);
     this.tlvHistory.push(resultTLV);
     this.tlv = null;
+    this.onItemClick(resultTLV);
   }
 
   onItemClick(tlv: string) {
